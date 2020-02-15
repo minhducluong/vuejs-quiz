@@ -1,47 +1,26 @@
 <template>
   <div id="app">
+    <Finish />
     <div class="container">
-      <Navigation direction="up" :current="current"/>
-      <div class="wrapper">
-        <Question :question="questions[current].ask" :index="current + 1" />
-        <Options :options="questions[current].options" />
-      </div>
-      <Navigation direction="down" :current="current"/>
+      <Navigation direction="up"/>
+      <Quiz />
+      <Navigation direction="down"/>
     </div>
   </div>
 </template>
 
 <script>
-import Question from "./components/Question.vue";
-import Options from "./components/Options.vue";
 import Navigation from "./components/Navigation.vue";
+import Quiz from "./components/Quiz.vue";
+import Finish from "./components/Finish.vue";
 
 export default {
   name: "App",
-  data() {
-    return {
-      current: 0,
-      questions: [
-        {
-          ask: 'Hà Nội có bao nhiêu con voi?',
-          options: [0, 1, 2, 3]
-        },
-        {
-          ask: 'Voi Hà Nội sống ở đâu (nếu có)?',
-          options: [
-            'Ba Vì',
-            'HN không có voi',
-            'Vườn Bách Thảo',
-            'Thủ Lệ'
-          ]
-        }
-      ]
-    }
-  },
+
   components: {
-    Question,
-    Options,
-    Navigation
+    Navigation,
+    Quiz,
+    Finish
   }
 };
 </script>
@@ -85,7 +64,7 @@ body {
 }
 
 .wrapper {
-  width: 100%;
+  width: 90%;
   height: 400px;
   margin: 20px 0;
 }

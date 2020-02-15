@@ -1,10 +1,22 @@
 <template>
-  <div class="option">{{ option }}</div>
+  <div 
+    class="option"
+    :class="chosen === index ? 'chosen' : ''"
+    @click="select(index)"
+  >
+    {{ option }}
+  </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-  props: ['option']
+  props: ['option', 'index', 'chosen'],
+
+  methods: {
+    ...mapActions(['select'])
+  }
 };
 </script>
 
@@ -12,9 +24,7 @@ export default {
 .option {
   border: 1px solid black;
   border-radius: 7px;
-  width: 20%;
-  float: left;
-  height: 100%;
+  flex: 1;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -22,5 +32,9 @@ export default {
   margin: 0 10px;
   padding: 0 10px;
   cursor: pointer;
+}
+
+.chosen {
+  background-color: rgba(128, 0, 128, 0.3);
 }
 </style>

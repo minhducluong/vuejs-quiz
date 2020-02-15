@@ -7,17 +7,25 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+  import { mapActions } from 'vuex'
+
   export default {
-    props: ['direction', 'current'],
+    props: ['direction'],
+
+    computed: {
+      ...mapState(['current'])
+    },
     
     methods: {
+      ...mapActions(['prev', 'next']),
       handleNavigate() {
         switch(this.direction) {
           case 'up':
-            this.current -= 1
+            this.prev()
             break
           case 'down':
-            this.current += 1
+            this.next()
             break
         }
       }

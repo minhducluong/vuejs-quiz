@@ -3,8 +3,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  props: ['question', 'index']
+  props: ['question', 'index'],
+
+  computed: {
+    ...mapState(['question'])
+  }
 };
 </script>
 

@@ -26,15 +26,25 @@ export default {
       const answered = this.answered;
       const point = this.point;
       const total = this.total;
+      const questions = this.questions
+      const falseAnswers = []
+
+      questions.forEach((question, index) => {
+        if (question.chosen !== question.answerIndex) {
+          falseAnswers.push(index + 1)
+        }
+      });
 
       if (answered < total) {
         if (confirm("Bạn chưa trả lời hết tất cả các câu.\nBạn có chắc chắn muốn tính điểm?")) {
-          alert(`Bạn trả lời đúng ${point}/${total} câu.\nXin hãy thử lại. Trả lời đúng hết sẽ có phần thưởng.`);
+          alert(`Bạn trả lời đúng ${point}/${total} câu.\nCâu chưa đúng là ${falseAnswers.join(', ')}.\nTrả lời đúng hết sẽ có phần thưởng.`);
         }
       } else {
-        // TODO win thì chuyển trang. Cơ hội dùng vue-router
-        if (point === total) alert('WIN')
-        else alert(`Bạn trả lời đúng ${point}/${total} câu.\nXin hãy thử lại. Trả lời đúng hết sẽ có phần thưởng.`);
+        if (point === total) {
+          this.$router.push('/congrat')
+        } else {
+          alert(`Bạn trả lời đúng ${point}/${total} câu.\nCâu chưa đúng là ${falseAnswers.join(', ')}.\nTrả lời đúng hết sẽ có phần thưởng.`);
+        }
       }
     }
   }
@@ -94,5 +104,24 @@ export default {
   -webkit-animation-name: pulse;
   animation-name: pulse;
   animation-duration: .5s;
+}
+
+@media (max-width: 576px) {
+	.finish {
+		font-size: 24px;
+	}
+}
+
+@media (max-width: 360px) and (orientation: portrait) {
+	.finish {
+		position: static;
+	}
+}
+
+@media (max-height: 400px) {
+	.finish {
+		top: 2%;
+		right: 2%;
+	}
 }
 </style>

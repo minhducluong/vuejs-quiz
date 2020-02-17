@@ -38,4 +38,10 @@
   cursor: pointer;
   padding: 30px;
 }
+
+@media (max-height: 400px), (max-width: 360px) and (orientation: portrait) {
+	.navigation-icon {
+		padding: 15px;
+	}
+}
 </style>

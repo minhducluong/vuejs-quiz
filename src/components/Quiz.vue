@@ -39,6 +39,11 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+  width: 90%;
+  margin: 20px 0;
+}
+
 .question {
   height: 170px;
   display: flex;
@@ -53,5 +58,39 @@ export default {
   display: flex;
   flex-wrap: wrap;
   text-align: center;
+}
+
+@media (max-width: 576px) {
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+}
+
+@media (max-width: 360px) and (orientation: portrait) {
+	.wrapper {
+		margin: 0;
+		height: auto;
+	}
+}
+
+@media (max-height: 400px) {
+	.wrapper {
+    width: 100%;
+    height: auto;
+	}
+}
+
+@media (max-width: 576px) {
+	.question {
+		height: auto;
+		margin-top: 15px;
+		margin-bottom: 20px;
+		font-size: 24px;
+	}
+	.option_wrap {
+		height: auto;
+	}
 }
 </style>

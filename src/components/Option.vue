@@ -37,4 +37,18 @@ export default {
 .chosen {
   background-color: rgba(128, 0, 128, 0.3);
 }
+
+@media (max-width: 576px) {
+	.option {
+		height: 50px;
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 360px) and (orientation: portrait) {
+	.option {
+		min-width: 35%;
+		margin-bottom: 15px;
+	}
+}
 </style>

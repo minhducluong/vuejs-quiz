@@ -39,6 +39,7 @@ export default {
 }
 
 .congrat {
+  font-size: 35px;
   position: absolute;
   top: 45%;
   left: 20%;
@@ -49,6 +50,12 @@ export default {
   background-color: rgb(0, 0, 0, 0.5);
   animation: 8s fadeInUp;
   opacity: 0;
+}
+
+@media (max-width: 360px) {
+  .congrat {
+    font-size: 20px;
+  }
 }
 
 @keyframes fadeInUp {
